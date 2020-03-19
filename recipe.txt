@@ -1,0 +1,13 @@
+server.get("/recipe", function(req, res){
+    const id = req.query.id
+    const recipe = recipes.find(function(recipe){
+        if (recipe.title == id){
+            return true
+        }
+    })
+
+    if (!recipe) {
+        return res.send("Recipe not found!")
+    }
+    return res.render("recipe", { recipe })
+})
